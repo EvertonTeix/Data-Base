@@ -51,7 +51,7 @@ public class App {
 
 				System.out.print("\nDigite o id do estudante que deseja atualizar: ");
 				long id = input.nextLong();
-				
+
 				input.nextLine();
 
 				System.out.print("\nDigite o novo nome do estudante: ");
@@ -84,6 +84,8 @@ public class App {
 			}
 
 		} while (opcao_menu != 0);
+
+		input.close();
 	}
 
 }

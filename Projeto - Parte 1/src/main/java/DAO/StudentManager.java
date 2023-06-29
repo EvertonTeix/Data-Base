@@ -14,7 +14,7 @@ public class StudentManager {
 	public void addStudent(Student student) {
 
 		try {
-			Connection connection = Connecting.getInstance().getConnection();
+			Connection connection = Conex.getInstance().getConnection();
 
 			String sql = "INSERT INTO student (NAME, EMAIL) VALUES (?, ?)";
 
@@ -25,8 +25,8 @@ public class StudentManager {
 
 			statement.execute();
 			connection.close();
-			
-			System.out.print("Usuário inserido com sucesso.");
+
+			System.out.print("Estudante inserido com sucesso.");
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -39,7 +39,7 @@ public class StudentManager {
 
 		try {
 
-			Connection connection = Connecting.getInstance().getConnection();
+			Connection connection = Conex.getInstance().getConnection();
 			String sql = "SELECT * FROM student";
 			PreparedStatement statement = connection.prepareStatement(sql);
 
@@ -79,7 +79,7 @@ public class StudentManager {
 
 		try {
 
-			Connection connection = Connecting.getInstance().getConnection();
+			Connection connection = Conex.getInstance().getConnection();
 			String sql = "UPDATE student SET name = ?, email = ? WHERE id = ?";
 			PreparedStatement statement = connection.prepareStatement(sql);
 
@@ -90,7 +90,7 @@ public class StudentManager {
 			statement.execute();
 			statement.close();
 			connection.close();
-			
+
 			System.out.print("Usuário editado com sucesso.");
 
 		} catch (Exception e) {
@@ -102,7 +102,7 @@ public class StudentManager {
 
 		try {
 
-			Connection connection = Connecting.getInstance().getConnection();
+			Connection connection = Conex.getInstance().getConnection();
 			String sql = "DELETE from student WHERE id = ?";
 			PreparedStatement statement = connection.prepareStatement(sql);
 
@@ -110,12 +110,11 @@ public class StudentManager {
 			statement.execute();
 			statement.close();
 			connection.close();
-			
+
 			System.out.print("Usuário excluído com sucesso.");
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-
 }
